@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sajag Smoothies</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav>
+    <h1><a href="/">Sajag Smoothies</a></h1>
+    <ul>
+      <% if (user) { %>  <!-- Check if user is logged in -->
+        <li>Welcome, <%= user.email %></li>  <!-- Display user's email -->
+        <li><a href="/logout">Log out</a></li> <!-- Log out link for logged-in users -->
+      <% } else { %>  <!-- If user is not logged in, show login and signup options -->
+        <li><a href="/login">Log in</a></li>
+        <li><a href="/signup" class="btn">Sign up</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</body>
+</html>

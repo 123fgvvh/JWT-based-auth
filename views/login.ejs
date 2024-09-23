@@ -1,0 +1,46 @@
+<%- include('partials/header'); -%>
+
+<form action="/login" method="POST">
+    <h2>Log in</h2>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+    <div class="email error"></div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <div class="password error"></div>
+    <button type="submit">Log In</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        try {
+            const res = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+
+            if (data.errors) {
+                // Display errors in the respective error divs
+                document.querySelector('.email.error').textContent = data.errors.email;
+                document.querySelector('.password.error').textContent = data.errors.password;
+            } else {
+                // If login is successful, redirect the user to the home page or dashboard
+                window.location.href = '/'; // Adjust the URL as needed
+            }
+        } catch (err) {
+            console.error('Error:', err);
+        }
+    });
+</script>
+
+<%- include('partials/footer'); -%>
