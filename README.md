@@ -26,21 +26,34 @@ This project is a simple authentication system built using **Node.js**, **Expres
 
 ```plaintext
 .
-├── models
-│   └── User.js              # Mongoose model for user schema
+.
+├── controllers
+│   └── authControllers.js    # Handles authentication logic (login, signup, logout)
 ├── middleware
-│   ├── authMiddleware.js     # Authentication middleware (requireAuth, checkUser)
-├── routes
-│   └── authRoutes.js         # Authentication routes (login, signup, logout)
-├── views
-│   └── login.ejs             # EJS template for login page
-│   └── signup.ejs            # EJS template for signup page
-│   └── home.ejs              # EJS template for homepage
-│   └── dashboard.ejs         # EJS template for user dashboard (protected)
+│   └── authMiddleware.js     # Authentication middleware (requireAuth, checkUser)
+├── models
+│   └── User.js               # Mongoose model for user schema
+├── node_modules              # Node.js packages (not tracked in version control)
 ├── public
-│   └── styles.css            # Static CSS files for styling
-├── app.js                    # Main application file
-└── README.md                 # Project readme
+│   ├── smoothie.png          # Image file used within the app
+│   └── styles.css            # CSS styles for the frontend
+├── routes
+│   └── authRoutes.js         # Routes for user authentication processes
+├── views
+│   ├── partials
+│   │   ├── footer.ejs        # Template for footer included in other views
+│   │   └── header.ejs        # Template for header used across different pages
+│   ├── smoothies.ejs         # EJS template for user dashboard (protected route)
+│   ├── home.ejs              # EJS template for the homepage
+│   ├── login.ejs             # EJS template for login page
+│   └── signup.ejs            # EJS template for signup page
+├── .env                      # Environment variables (database URI, JWT secret, etc.)
+├── app.js                    # Main application file configuring server and routes
+├── notes.md                  # Project notes or additional documentation
+├── package-lock.json         # Auto-generated file for node_modules and package.json
+├── package.json
+└── README.md                 # Documentation of the project overview and setup instructions
+
 ```
 
 ## Installation
@@ -98,7 +111,7 @@ This project is a simple authentication system built using **Node.js**, **Expres
 
 1. **Sign Up**: Navigate to `/signup` to create a new user account.
 2. **Log In**: After signing up, log in at `/login`. On successful login, a JWT is issued and stored in the cookies.
-3. **Access Protected Routes**: Once logged in, navigate to `/dashboard`, which is a protected route. If the user is not authenticated, they will be redirected to the login page.
+3. **Access Protected Routes**: Once logged in, navigate to `/smoothies`, which is a protected route. If the user is not authenticated, they will be redirected to the login page.
 
 ## License
 
